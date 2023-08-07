@@ -15,3 +15,8 @@ def product_list(request, category_slug=None):
     return render(
         request, "shopapp/product/list.html", {"category": category, "categories": categories, "products": products}
     )
+
+
+def product_detail(request, id, slug):
+    product = get_object_or_404(shopapp_models.Product, id=id, slug=slug, available=True)
+    return render(request, "shopapp/product/detail.html", {"product": product})
