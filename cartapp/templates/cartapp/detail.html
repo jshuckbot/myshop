@@ -20,11 +20,11 @@
         </thead>
         <tbody>
         {% for item in cart %}
-            {% with item.product as product %}
+            {% with product=item.product %}
                 <tr>
                     <td>
                         <a href="{{ product.get_absolute_url }}">
-                            <img src="{% if product.image %}{{ product.img.url }}
+                            <img src="{% if product.image %}{{ product.image.url }}
                             {% else %}{% static 'img/no_image.png' %}{% endif %}"
                                  alt="{{ product.name }}">
                         </a>
@@ -34,10 +34,11 @@
                     <td>
                         <form action="{% url 'cartapp:cart_remove' product.id %}" method="post">
                             {% csrf_token %}
+                            <input type="submit" value="Remove">
                         </form>
                     </td>
-                    <td class="num">${{ product.price }}</td>
-                    <td class="num">${{ product.total_price }}</td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
                 </tr>
             {% endwith %}
         {% endfor %}
