@@ -3,7 +3,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-j*pa!^%d&+426*4+6$m6ma9xuhqbjc&#-3*ra*)+glb8_%3=a3"
 
@@ -11,7 +10,6 @@ SECRET_KEY = "django-insecure-j*pa!^%d&+426*4+6$m6ma9xuhqbjc&#-3*ra*)+glb8_%3=a3
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -25,6 +23,7 @@ INSTALLED_APPS = [
     "shopapp.apps.ShopappConfig",
     "cartapp.apps.CartappConfig",
     "orderapp.apps.OrderappConfig",
+    'paymentapp.apps.PaymentappConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +57,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "config.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -68,7 +66,6 @@ DATABASES = {
         "NAME": BASE_DIR / "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -88,7 +85,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -99,7 +95,6 @@ TIME_ZONE = "UTC"
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -117,3 +112,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 CART_SESSION_ID = "cart"
 
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51Ni4WrKASgth8A218QQxr3Q7i6srzbdfotXFTISaI21F61q1zAMJBuy1a3Vksrt6WoeI1iBhQvanAHozwou2ghe200hB6H4jTT'
+STRIPE_SECRET_KEY = 'sk_test_51Ni4WrKASgth8A21pvSx4UhY4vx86kUVWrVkAVMG345FIq1t6bsyYS1aYAMcQXXSvAeSR0jtldLXzy9uednEqSuM00XBrqldYK'
+STRIPE_API_VERISON = '2022-08-01'
