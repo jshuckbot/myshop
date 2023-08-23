@@ -46,3 +46,11 @@ def payment_process(request):
         # Перенаправить к платежной форме Stripe
         return redirect(session.url, code=303)
     return render(request, "paymentapp/process.html", locals())
+
+
+def payment_completed(request):
+    return render(request, "paymentapp/completed.html")
+
+
+def payment_canceled(request):
+    return render(request, "paymentapp/canceled.html")
