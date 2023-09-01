@@ -4,8 +4,14 @@ import datetime
 from django.contrib import admin
 from django.http import HttpResponse
 from django.utils.safestring import mark_safe
+from django.urls import reverse
 
 from orderapp import models as orderapp_models
+
+
+def order_detail(obj):
+    url = reverse('orderapp:admin_order_detail', args=[obj.id])
+    return mark_safe(f'<a href="{url}">View</a>')
 
 
 def order_stripe_payment(obj):
@@ -59,9 +65,10 @@ class OrderAdmin(admin.ModelAdmin):
         "postal_code",
         "city",
         "paid",
-        order_stripe_payment,
         "created",
         "updated",
+        order_stripe_payment,
+        order_detail,
     ]
     list_filter = ["paid", "created", "updated"]
     inlines = [OrderItemInline]

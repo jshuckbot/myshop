@@ -36,5 +36,6 @@ def stripe_webkook(request):
             order.paid = True
             order.stripe_id = session.payment_intent
             order.save()
+            # payment_completed.delay(order.id)
 
     return HttpResponse(status=200)
