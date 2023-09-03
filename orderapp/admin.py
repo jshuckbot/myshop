@@ -3,21 +3,21 @@ import datetime
 
 from django.contrib import admin
 from django.http import HttpResponse
-from django.utils.safestring import mark_safe
 from django.urls import reverse
+from django.utils.safestring import mark_safe
 
 from orderapp import models as orderapp_models
 
 
 def order_detail(obj):
-    url = reverse('orderapp:admin_order_detail', args=[obj.id])
+    url = reverse("orderapp:admin_order_detail", args=[obj.id])
     return mark_safe(f'<a href="{url}">View</a>')
 
 
 def order_stripe_payment(obj):
     url = obj.get_stripe_url()
     if obj.stripe_id:
-        html = f'<a href="{url}" target="_blank>{obj.stripe_id}</a>'
+        html = f'<a href="{url}" target="_blank">{obj.stripe_id}</a>'
         return mark_safe(html)
     return ""
 
